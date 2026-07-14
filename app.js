@@ -37,8 +37,8 @@ const Pet = mongoose.model("Pets", new mongoose.Schema(
 
 app.get("/test", (req, res) => {
     res.send("Hi")
-})
-
+}
+)
 
 app.listen(3000, () => {
     console.log("Server Started")
