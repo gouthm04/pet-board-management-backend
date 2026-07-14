@@ -40,6 +40,27 @@ app.get("/test", (req, res) => {
 }
 )
 
+app.post("/add-pet", async (req, res) => {
+    try {
+        await Pet.create(req.body)
+        res.json({ "status": "Success" })
+    } catch (error) {
+        res.status(500).json({ "status": "Error", "message": error.message })
+    }
+})
+
+
+
+app.post("/view-pets", async (req, res) => {
+    try {
+        const pets = await Pet.find()
+        res.json(pets)
+    } catch (error) {
+        res.status(500).json({ "status": "Error", "message": error.message })
+    }
+})
+
+
 app.listen(3000, () => {
     console.log("Server Started")
 })
